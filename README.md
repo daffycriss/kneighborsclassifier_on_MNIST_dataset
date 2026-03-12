@@ -1,64 +1,52 @@
-# MPG Prediction with Machine Learning
+# MNIST Binary Classification: Odd vs Even
 
-This repository contains a complete end-to-end machine learning solution for predicting a car’s fuel efficiency (miles per gallon - MPG) using the **MPG dataset** available through Python's **seaborn** package. The goal is to predict the value of the target variable (MPG) based on other car attributes (predictors) using proper data analysis, preprocessing, and modeling techniques.
+This repository contains a machine learning project that works with the **MNIST dataset** to classify handwritten digits as **odd** or **even** numbers. The project demonstrates data preprocessing, model training, hyperparameter tuning, evaluation, and visualization.
 
 ## Assignment Overview
 
-The project follows the steps outlined below:
+The project follows these steps:
 
-1. **Load and Inspect Dataset**  
-   Open a Jupyter Notebook, load the MPG dataset, and inspect a few initial values to understand the structure.
+1. **Load and Normalize Data**  
+   - Load the MNIST dataset and split it into training (60,000 images) and test sets (10,000 images).  
+   - Normalize pixel values to a range of 0 to 1.
 
-2. **Identify Predictors and Target**  
-   Analyze the dataset to determine which features will be used as predictors and which as the target variable. Discuss features that influence fuel efficiency.
+2. **Binary Classification Setup**  
+   Convert the original 10-class problem into a binary classification task:  
+   - Odd digits → class 1  
+   - Even digits (including 0) → class 0
 
-3. **Descriptive Statistics**  
-   Compute descriptive statistics of the dataset features, analyze their types, ranges, and completeness.
+3. **K-Nearest Neighbors Model & Hyperparameter Tuning**  
+   - Use `KNeighborsClassifier` for classification.  
+   - Perform grid search on `n_neighbors` with values `[3, 5, 7]` to find the optimal hyperparameters.
 
-4. **Data Cleaning and Transformation**  
-   - Remove rows with missing values.  
-   - Drop categorical variables.  
-   - Generate histograms of the features and analyze their distributions.  
-   - Apply transformations to improve feature distributions (e.g., making them closer to Gaussian) and compare results.
+4. **Model Evaluation**  
+   - Evaluate the model on the test set using **accuracy**, **precision**, and **recall**.  
+   - Apply 3-fold cross-validation for robust performance estimation.
 
-5. **Feature Importance Analysis**  
-   Evaluate which features most strongly affect MPG using correlation analysis and provide evidence-based discussion.
+5. **Confusion Matrix Analysis**  
+   - Compute the confusion matrix on the training set.  
+   - Identify how many samples were misclassified as odd or even.
 
-6. **Train-Test Split**  
-   - Separate predictors and target variables.  
-   - Split the dataset into 80% training and 20% testing sets (random state = 42).  
-   - Plot and compare histograms of the target variable in training and testing sets.
-
-7. **Modeling with Pipeline**  
-   - Create a machine learning pipeline combining **StandardScaler** and **Linear Regression**.  
-   - Evaluate performance on the test set using the following metrics:  
-     - R² Score  
-     - Mean Absolute Error (MAE)  
-     - Mean Absolute Percentage Error (MAPE)  
-     - Mean Squared Error (MSE)  
-   - Plot Actual vs Predicted MPG values and comment on the results.
-
-8. **Cross-Validation**  
-   Perform 10-fold cross-validation, compute the mean and standard deviation of R² scores, and compare with the test set performance.
+6. **ROC Curve and AUC**  
+   - Plot the **ROC curve** to visualize classification performance.  
+   - Calculate the **Area Under the Curve (AUC)** to quantify model discrimination.
 
 ## Requirements
 
 - Python 3.x  
-- Jupyter Notebook  
-- Libraries: `pandas`, `numpy`, `seaborn`, `matplotlib`, `scikit-learn`
+- Libraries: `numpy`, `pandas`, `matplotlib`, `scikit-learn`, `tensorflow` or `keras` (for MNIST loading)
 
 ## How to Run
 
-1. Clone this repository:  
+1. Clone the repository:  
    ```bash
-   git clone https://github.com/<your-username>/MPG-Prediction.git
+   git clone https://github.com/<your-username>/MNIST-Binary-Classification.git
 
 2. Open the Jupyter Notebook:
+   jupyter notebook MNIST_Binary_Classification.ipynb
 
-jupyter notebook MPG_Prediction.ipynb
-
-3. Follow the steps in the notebook to explore, clean, and model the dataset.
+3. Follow the notebook to load data, train the KNN model, tune hyperparameters, and evaluate performance.
 
 ## Outcome
 
-This project demonstrates a full workflow for predictive modeling, including data cleaning, visualization, feature analysis, model training, evaluation, and cross-validation, applied to predicting car fuel efficiency.
+This project provides a complete workflow for binary image classification, including preprocessing, KNN modeling, hyperparameter tuning, cross-validation, performance metrics, confusion matrix analysis, and ROC/AUC evaluation.

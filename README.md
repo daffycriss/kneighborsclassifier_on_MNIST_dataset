@@ -40,7 +40,7 @@ The project follows these steps:
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/<your-username>/MNIST-Binary-Classification.git
+   git clone https://github.com/daffycriss/kneighborsclassifier_on_MNIST_dataset.git
 
 2. Open the Jupyter Notebook:
    jupyter notebook MNIST_Binary_Classification.ipynb
